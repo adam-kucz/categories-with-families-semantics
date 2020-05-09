@@ -1,0 +1,3 @@
+{-# OPTIONS --exact-split --safe --prop #-}
+module CategoryWithFamilies where
+
