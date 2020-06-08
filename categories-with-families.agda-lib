@@ -1,3 +1,0 @@
-name: categories-with-families
-depend: stdlib-adam-kucz category-theory-adam-kucz
-include: src

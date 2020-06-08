@@ -1,7 +1,7 @@
 {-# OPTIONS --exact-split --prop #-}
-module CategoryWithFamilies.Equivalence where
+module Category.WithFamilies.Equivalence where
 
-open import CategoryWithFamilies.Definition
+open import Category.WithFamilies.Definition
 open import Category.Fam
 
 open import Category hiding (ℂ)

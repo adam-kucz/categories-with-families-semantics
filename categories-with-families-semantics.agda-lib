@@ -1,0 +1,3 @@
+name: categories-with-families-semantics
+depend: stdlib-adam-kucz category-theory-adam-kucz mcbride-formalization
+include: src

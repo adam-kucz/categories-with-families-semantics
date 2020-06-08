@@ -1,5 +1,5 @@
 {-# OPTIONS --exact-split --prop #-}
-module CategoryWithFamilies.Definition where
+module Category.WithFamilies.Definition where
 
 open import Category.Fam
 
