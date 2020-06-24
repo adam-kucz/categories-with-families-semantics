@@ -16,7 +16,7 @@ Fam 𝒰 𝒱 = record
   ; _∘_ = λ { (f , g)(f' , g') →
     f ∘ₛ f' ,
     λ x → g (f' x) ∘ₛ g' x}
-  ; left-unit = λ _ → Id-refl _
-  ; right-unit = λ _ → Id-refl _
-  ; assoc = λ _ _ _ → Id-refl _
+  ; left-unit = λ _ → Id.refl _
+  ; right-unit = λ _ → Id.refl _
+  ; assoc = λ _ _ _ → Id.refl _
   }

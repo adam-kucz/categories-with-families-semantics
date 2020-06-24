@@ -8,8 +8,16 @@ data Var : (n : ℕ) → 𝒰₀ ˙ where
   new : {n : ℕ} → Var (n +1)
   old : {n : ℕ} (a : Var n) → Var (n +1)
 
-open import Proposition.Decidable
 open import Proof
+
+nth-var : ∀ n {m} (p : n +1 ≤ m) → Var m
+nth-var zero {m +1} p = new
+nth-var (n +1) {m +1} p = old (nth-var n (ap pred p))
+
+last-var : ∀ n → Var (n +1)
+last-var n = nth-var n (refl (n +1))
+
+open import Proposition.Decidable
 
 instance
   DecidableVar== : HasDecidableIdentity (Var n)
@@ -60,3 +68,4 @@ data Context : (n : ℕ) → 𝒰₀ ˙ where
     (S : Term n)
     → ----------------
     Context (n +1)
+

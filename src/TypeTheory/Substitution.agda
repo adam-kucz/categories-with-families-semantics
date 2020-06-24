@@ -50,6 +50,12 @@ expand-by : ∀
   expr-of-type tag (k + m)
 expand-by k t = rename (weaken k) t
 
+expand : ∀{tag}
+  (t : expr-of-type tag m)
+  → -----------------------
+  expr-of-type tag (m +1)
+expand = rename weaken-1
+
 shift : (t : expr-of-type tag m) → expr-of-type tag (m +1)
 shift = rename old
 
