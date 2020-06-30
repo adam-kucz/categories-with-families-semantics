@@ -8,24 +8,56 @@ module Semantics.Property
   ⦃ id-types : HasIdTypes C ⦄
   where
 
+open import Semantics.Definition C
+open import TypeTheory
+
+open import Data.Nat
+open import Logic hiding (_,_)
+
 open import Category hiding (ℂ)
 open import Functor
 
 open CwU C renaming (module Coer to CwU-Coer)
 open WithCwU C
 open HasPiTypes pi-types renaming (app to app')
-open HasIdTypes id-types renaming (Id to Id'; refl to refl')
-open WithIdTypes ⦃ id-types ⦄ renaming (refl-term to refl-term')
-  hiding (module Coer)
+-- open HasIdTypes id-types renaming (Id to Id'; refl to refl')
+-- open WithIdTypes ⦃ id-types ⦄ renaming (refl-term to refl-term')
+--   hiding (module Coer)
 private instance _ = ℂ; _ = λ {s} → ℱ s
 
-problem₀ : {Γ : Ctx}{ρ : Val n Γ}{s₀ s₁ : ℕ}
-  {A : Ty s₀ Γ}
-  {a₀ a₁ : Tm A}{a₀==a₁ : Tm (Id-type A a₀ a₁)}
-  → let Id-typ = Id-type (A ⁺) (a₀ ⊙ 𝒑 A) (𝒒 A)
-        Γ' = Γ ,, A ,, Id-typ
-  in {B : Ty s₁ Γ'}
-  → ?
+soundness : ∀{Γ : Context n}{t t' T i}
+  (p₀ : Γ ⊢ t ∋ T)
+  (p₁ : Γ ⊢ T ∋ ⋆ i)
+  (q : t ⇝ t')
+  → ---------------------
+  ∃ λ X → ∃ λ (ρ : Val n X) → ∃ λ A → ∃ λ a →
+  ⟦ Γ ⟧:=[ X , ρ ] ∧
+  ∥ T ∥[ X , ρ , i ]:= A ∧
+  ∥ t ∥[ X , ρ , i , A ]:= a ∧
+  ∥ t' ∥[ X , ρ , i , A ]:= a
+soundness (pre p₀ R⇝T) p₁ q = {!!}
+soundness (sort Γ p) p₁ q = {!!}
+soundness (pi-type p₀ p₂) p₁ q = {!!}
+soundness (lam p₀) p₁ q = {!!}
+soundness (elim Δ⊢ρe∈S) p₁ q = {!!}
+
+
+
+
+
+
+
+
+
+
+
+-- problem₀ : {Γ : Ctx}{ρ : Val n Γ}{s₀ s₁ : ℕ}
+--   {A : Ty s₀ Γ}
+--   {a₀ a₁ : Tm A}{a₀==a₁ : Tm (Id-type A a₀ a₁)}
+--   → let Id-typ = Id-type (A ⁺) (a₀ ⊙ 𝒑 A) (𝒒 A)
+--         Γ' = Γ ,, A ,, Id-typ
+--   in {B : Ty s₁ Γ'}
+--   → ?
 
 {-
 {- want:

@@ -32,21 +32,21 @@ DecidableVar== | false ¬p = false λ { (Id.refl (old v)) → ¬p (Id.refl v) }
 data Term (n : ℕ) : 𝒰₀ ˙
 data Elim (n : ℕ) : 𝒰₀ ˙
     
-infix 170 [x:_]→_ λx,_ Id[_]_==_
+infix 170 [x:_]→_ λx,_ -- Id[_]_==_
 data Term n where
   ⋆ : (i : ℕ) → Term n
   [x:_]→_ : (S : Term n) (T : Term (n +1)) → Term n
   λx,_ : (t : Term (n +1)) → Term n
   ⌊_⌋ : (e : Elim n) → Term n
-  Id[_]_==_ : (T t t' : Term n) → Term n
-  refl-term : Term n
+  -- Id[_]_==_ : (T t t' : Term n) → Term n
+  -- refl-term : Term n
   
-infix 160 _`_ _꞉_ J[_,[x,y]→_,_]
+infix 160 _`_ _꞉_ -- J[_,[x,y]→_,_]
 data Elim n where
   var : (v : Var n) → Elim  n
   _`_ : (f : Elim n) (s : Term n) → Elim n
   _꞉_ : (s : Term n) (S : Term n) → Elim n
-  J[_,[x,y]→_,_] : (e : Elim n)(T : Term (n +2))(t : Term n) → Elim n
+  -- J[_,[x,y]→_,_] : (e : Elim n)(T : Term (n +2))(t : Term n) → Elim n
 
 data ExprTag : 𝒰₀ ˙ where
   term elim : ExprTag

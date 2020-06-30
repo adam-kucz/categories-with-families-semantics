@@ -40,18 +40,18 @@ data _⊢_∋_ {n} where
     → --------------------------------------
     Δ ⊢ T ∋ ⌊ e ⌋
 
-  id-type : ∀{i}{Γ : Context n}{T t t'}
-    (Γ⊢*ᵢ∋T : Γ ⊢ ⋆ i ∋ T)
-    (Γ⊢T∋t : Γ ⊢ T ∋ t)
-    (Γ⊢T∋t' : Γ ⊢ T ∋ t')
-    → --------------------------------------
-    Γ ⊢ ⋆ i ∋ Id[ T ] t == t'
+  -- id-type : ∀{i}{Γ : Context n}{T t t'}
+  --   (Γ⊢*ᵢ∋T : Γ ⊢ ⋆ i ∋ T)
+  --   (Γ⊢T∋t : Γ ⊢ T ∋ t)
+  --   (Γ⊢T∋t' : Γ ⊢ T ∋ t')
+  --   → --------------------------------------
+  --   Γ ⊢ ⋆ i ∋ Id[ T ] t == t'
 
-  refl-term : ∀{i}{Γ : Context n}{T t}
-    (Γ⊢*ᵢ∋T : Γ ⊢ ⋆ i ∋ T)
-    (Γ⊢T∋t : Γ ⊢ T ∋ t)
-    → --------------------------------------
-    Γ ⊢ Id[ T ] t == t ∋ refl-term
+  -- refl-term : ∀{i}{Γ : Context n}{T t}
+  --   (Γ⊢*ᵢ∋T : Γ ⊢ ⋆ i ∋ T)
+  --   (Γ⊢T∋t : Γ ⊢ T ∋ t)
+  --   → --------------------------------------
+  --   Γ ⊢ Id[ T ] t == t ∋ refl-term
 
 open import TypeTheory.ContextCollection
 import Data.List as L
@@ -89,10 +89,10 @@ data _⊢_∈_ where
     → --------------------------------------
     Γ ⊢ s ꞉ S ∈ S
 
-  J :  ∀{i}{Γ : Context n}{e T t₀ t₁ T' t}
-    (Γ⊢e∈Id[T]t₀==t₁ : Γ ⊢ e ∈ Id[ T ] t₀ == t₁)
-    (Γ,x:T,y:Id⊢⋆ᵢ∋T' :
-       Γ ∥x: T ∥x: Id[ expand T ] expand t₀ == ⌊ var new ⌋ ⊢ ⋆ i ∋ T')
-    (Γ⊢T'∋t : Γ ⊢ T' [ t₀ ꞉ T /x, refl-term ꞉ Id[ T ] t₀ == t₀ /y] ∋ t)
-    → --------------------------------------------------------------------------
-    Γ ⊢ J[ e ,[x,y]→ T' , t ] ∈ T' [ t₁ ꞉ T /x, e /y]
+  -- J :  ∀{i}{Γ : Context n}{e T t₀ t₁ T' t}
+  --   (Γ⊢e∈Id[T]t₀==t₁ : Γ ⊢ e ∈ Id[ T ] t₀ == t₁)
+  --   (Γ,x:T,y:Id⊢⋆ᵢ∋T' :
+  --      Γ ∥x: T ∥x: Id[ expand T ] expand t₀ == ⌊ var new ⌋ ⊢ ⋆ i ∋ T')
+  --   (Γ⊢T'∋t : Γ ⊢ T' [ t₀ ꞉ T /x, refl-term ꞉ Id[ T ] t₀ == t₀ /y] ∋ t)
+  --   → --------------------------------------------------------------------------
+  --   Γ ⊢ J[ e ,[x,y]→ T' , t ] ∈ T' [ t₁ ꞉ T /x, e /y]

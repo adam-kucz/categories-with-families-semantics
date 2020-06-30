@@ -30,45 +30,45 @@ data OneHoleContext
     → ---------------------
     OneHoleContext tag m term n
 
-  Id[_↓]_==_ : ∀{m n tag}
-    (C : OneHoleContext tag m term n)
-    (t₀ t₁ : Term n)
-    → ---------------------
-    OneHoleContext tag m term n
+  -- Id[_↓]_==_ : ∀{m n tag}
+  --   (C : OneHoleContext tag m term n)
+  --   (t₀ t₁ : Term n)
+  --   → ---------------------
+  --   OneHoleContext tag m term n
 
-  Id[_]_↓==_ : ∀{m n tag}
-    (T : Term n)
-    (C : OneHoleContext tag m term n)
-    (t₁ : Term n)
-    → ---------------------
-    OneHoleContext tag m term n
+  -- Id[_]_↓==_ : ∀{m n tag}
+  --   (T : Term n)
+  --   (C : OneHoleContext tag m term n)
+  --   (t₁ : Term n)
+  --   → ---------------------
+  --   OneHoleContext tag m term n
 
-  Id[_]_==_↓ : ∀{m n tag}
-    (T t₀ : Term n)
-    (C : OneHoleContext tag m term n)
-    → ---------------------
-    OneHoleContext tag m term n
+  -- Id[_]_==_↓ : ∀{m n tag}
+  --   (T t₀ : Term n)
+  --   (C : OneHoleContext tag m term n)
+  --   → ---------------------
+  --   OneHoleContext tag m term n
 
-  J[_↓,[x,y]→_,_] : ∀{m n tag}
-    (C : OneHoleContext tag m elim n)
-    (T' : Term (n +2))
-    (t : Term n)
-    → ---------------------
-    OneHoleContext tag m elim n
+  -- J[_↓,[x,y]→_,_] : ∀{m n tag}
+  --   (C : OneHoleContext tag m elim n)
+  --   (T' : Term (n +2))
+  --   (t : Term n)
+  --   → ---------------------
+  --   OneHoleContext tag m elim n
 
-  J[_,[x,y]→_↓,_] : ∀{m n tag}
-    (e : Elim n)
-    (C : OneHoleContext tag m term (n +2))
-    (t : Term n)
-    → ---------------------
-    OneHoleContext tag m elim n
+  -- J[_,[x,y]→_↓,_] : ∀{m n tag}
+  --   (e : Elim n)
+  --   (C : OneHoleContext tag m term (n +2))
+  --   (t : Term n)
+  --   → ---------------------
+  --   OneHoleContext tag m elim n
 
-  J[_,[x,y]→_,_↓] : ∀{m n tag}
-    (e : Elim n)
-    (T' : Term (n +2))
-    (C : OneHoleContext tag m term n)
-    → ---------------------
-    OneHoleContext tag m elim n
+  -- J[_,[x,y]→_,_↓] : ∀{m n tag}
+  --   (e : Elim n)
+  --   (T' : Term (n +2))
+  --   (C : OneHoleContext tag m term n)
+  --   → ---------------------
+  --   OneHoleContext tag m elim n
 
   λx,_ : ∀{m n tag}
     (C : OneHoleContext tag m term (n +1))
@@ -119,12 +119,12 @@ _[_/—] : ∀{m n tag₀ tag₁}
 (C[—] ↓` s) [ e /—] = C[—] [ e /—] ` s
 (s ꞉ C[—] ↓) [ e /—] = s ꞉ C[—] [ e /—]
 (C[—] ↓꞉ S) [ e /—] = C[—] [ e /—] ꞉ S
-(Id[ C[—] ↓] t₀ == t₁) [ e /—] = Id[ C[—] [ e /—] ] t₀ == t₁
-(Id[ T ] C[—] ↓== t₁) [ e /—] = Id[ T ] C[—] [ e /—] == t₁
-Id[ T ] t₀ == C[—] ↓ [ e /—] = Id[ T ] t₀ == C[—] [ e /—]
-J[ C[—] ↓,[x,y]→ T' , t ] [ e /—] = J[ C[—] [ e /—] ,[x,y]→ T' , t ]
-J[ e₀ ,[x,y]→ C[—] ↓, t ] [ e /—] = J[ e₀ ,[x,y]→ C[—] [ e /—] , t ]
-J[ e₀ ,[x,y]→ T' , C[—] ↓] [ e /—] = J[ e₀ ,[x,y]→ T' , C[—] [ e /—] ]
+-- (Id[ C[—] ↓] t₀ == t₁) [ e /—] = Id[ C[—] [ e /—] ] t₀ == t₁
+-- (Id[ T ] C[—] ↓== t₁) [ e /—] = Id[ T ] C[—] [ e /—] == t₁
+-- Id[ T ] t₀ == C[—] ↓ [ e /—] = Id[ T ] t₀ == C[—] [ e /—]
+-- J[ C[—] ↓,[x,y]→ T' , t ] [ e /—] = J[ C[—] [ e /—] ,[x,y]→ T' , t ]
+-- J[ e₀ ,[x,y]→ C[—] ↓, t ] [ e /—] = J[ e₀ ,[x,y]→ C[—] [ e /—] , t ]
+-- J[ e₀ ,[x,y]→ T' , C[—] ↓] [ e /—] = J[ e₀ ,[x,y]→ T' , C[—] [ e /—] ]
 
 infix 36 _⇝_ _↠_
 data _⇝_ : BinRel 𝒰₀ (expr-of-type tag n) where
@@ -136,12 +136,12 @@ data _⇝_ : BinRel 𝒰₀ (expr-of-type tag n) where
     → ------------------
     ⌊ t ꞉ T ⌋ ⇝ t
 
-  J[refl:Id[_]_==self,[x,y]→_,_] :
-    (T t₀ : Term n)(T' : Term (n +2))(t : Term n)
-    → -------------------------------------------------
-    J[ (refl-term ꞉ Id[ T ] t₀ == t₀) ,[x,y]→ T' , t ]
-    ⇝
-    t ꞉ T' [ t₀ ꞉ T /x, refl-term ꞉ Id[ T ] t₀ == t₀ /y]
+  -- J[refl:Id[_]_==self,[x,y]→_,_] :
+  --   (T t₀ : Term n)(T' : Term (n +2))(t : Term n)
+  --   → -------------------------------------------------
+  --   J[ (refl-term ꞉ Id[ T ] t₀ == t₀) ,[x,y]→ T' , t ]
+  --   ⇝
+  --   t ꞉ T' [ t₀ ꞉ T /x, refl-term ꞉ Id[ T ] t₀ == t₀ /y]
 
   hole : ∀ {m n tag₀ tag₁ s t}
     (C[—] : OneHoleContext tag₀ m tag₁ n)

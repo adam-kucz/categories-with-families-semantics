@@ -33,14 +33,14 @@ rename ρ {term} (⋆ i) = ⋆ i
 rename ρ {term} ([x: S ]→ T) = [x: rename ρ S ]→ rename (lift-ren ρ) T
 rename ρ {term} (λx, t) = λx, rename (lift-ren ρ) t
 rename ρ {term} ⌊ e ⌋ = ⌊ rename ρ e ⌋
-rename ρ {term} (Id[ t ] t₁ == t₂) = Id[ rename ρ t ] rename ρ t₁ == rename ρ t₂
-rename ρ {term} refl-term = refl-term
+-- rename ρ {term} (Id[ t ] t₁ == t₂) = Id[ rename ρ t ] rename ρ t₁ == rename ρ t₂
+-- rename ρ {term} refl-term = refl-term
 rename ρ {elim} (var v) = var (ρ v)
 rename ρ {elim} (f ` s) = rename ρ f ` rename ρ s
 rename ρ {elim} (s ꞉ S) = rename ρ s ꞉ rename ρ S
-rename ρ {elim} J[ t ,[x,y]→ T , t₁ ] =
-  J[ rename ρ t ,[x,y]→ rename ρ' T , rename ρ t₁ ]
-  where ρ' = lift-ren (lift-ren ρ)
+-- rename ρ {elim} J[ t ,[x,y]→ T , t₁ ] =
+--   J[ rename ρ t ,[x,y]→ rename ρ' T , rename ρ t₁ ]
+--   where ρ' = lift-ren (lift-ren ρ)
 
 expand-by : ∀
   (k : ℕ)
@@ -76,14 +76,14 @@ sub σ {term} (⋆ i) = ⋆ i
 sub σ {term} ([x: T ]→ S) = [x: sub σ T ]→ sub (lift σ) S
 sub σ {term} (λx, t) = λx, sub (lift σ) t
 sub σ {term} ⌊ e ⌋ = ⌊ sub σ e ⌋
-sub σ {term} (Id[ t ] t₁ == t₂) = Id[ sub σ t ] sub σ t₁ == sub σ t₂
-sub σ {term} refl-term = refl-term
+-- sub σ {term} (Id[ t ] t₁ == t₂) = Id[ sub σ t ] sub σ t₁ == sub σ t₂
+-- sub σ {term} refl-term = refl-term
 sub σ {elim} (var v) = σ v
 sub σ {elim} (f ` s) = sub σ f ` sub σ s
 sub σ {elim} (s ꞉ S) = sub σ s ꞉ sub σ S
-sub σ {elim} J[ t ,[x,y]→ T , t₁ ] =
-  J[ sub σ t ,[x,y]→ sub σ' T , sub σ t₁ ]
-  where σ' = lift (lift σ)
+-- sub σ {elim} J[ t ,[x,y]→ T , t₁ ] =
+--   J[ sub σ t ,[x,y]→ sub σ' T , sub σ t₁ ]
+--   where σ' = lift (lift σ)
 
 newSub : (e : Elim n) → Sub (n +1) n
 newSub e new = e

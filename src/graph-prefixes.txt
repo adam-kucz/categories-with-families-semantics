@@ -1,0 +1,32 @@
+MODE del
+
+SemanticsGraph
+Agda
+Universes
+PropUniverses
+Collection
+Structure
+Type
+Relation
+Operation
+Function
+Proof
+Logic
+Proposition
+Data
+Category
+Functor
+Isomorphism
+Construction
+Example
+Monad
+Adjunction
+NaturalTransformation
+
+MODE save
+
+Proposition.Unique
+Proposition.Identity.Coercion
+Data.List.Functor
+Category.WithUniverses
+Example.Set'
